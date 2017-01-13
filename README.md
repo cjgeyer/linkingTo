@@ -19,9 +19,11 @@ callable from another package, it has to do a bunch of things.
     for the rest of this to work.  But it is a good idea anyway.
     This item only benefits this package `foompter`.  It is the next
     item that benefits the other package `goompter`.
+
 1. It has to register its C functions called from C in other packages via
     the `R_RegisterCCallable` mechanism ([Section 5.4.2 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages).
     In our package `foompter` this is done in [`init.c`](packages/foompter/src/init.c).  This file also does item 1 above.
+
 1. It should provide an include file that says how to call the exported
     function.  This include file is exported by putting it in the `include`
     directory of the installed package, which means it is in
@@ -33,6 +35,7 @@ callable from another package, it has to do a bunch of things.
     we make such a function pointer which we don't actually use in
     this package (in [`foompter.c`](packages/foompter/src/foompter.c))
     just do the compiler will check that the typedef is correct.
+
 1. Since we need the header file in two places we make
     `packages/foompter/inst/include/foompter.h` a symbolic link to
     `packages/foompter/src/foompter.h`.
@@ -47,6 +50,7 @@ In order for R package `goompter` to be able to call a function
 
     a. It has to put the name of that package in the Imports field of its
         [`DESCRIPTION` file](packages/goompter/DESCRIPTION).
+
     b. It has to import that package with an `import(foompter)` directive
         in its
         [`NAMESPACE` file](packages/goompter/NAMESPACE).
