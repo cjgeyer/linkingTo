@@ -16,12 +16,12 @@ callable from another package, it has to do a bunch of things.
     the `R_registerRoutines` mechanism ([Section 5.4 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).  Actually, on second thought I don't know that this is necessary for the rest of this to work.  But it is a good idea anyway.
 1. It has to register its C functions called from C in other packages via
     the `R_RegisterCCallable` mechanism ([Section 5.4.2 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages).
-    In our package `foompter` this is done in [`init.c](packages/foompter/src/init.c).  This file also does item 1 above.
+    In our package `foompter` this is done in [`init.c`](packages/foompter/src/init.c).  This file also does item 1 above.
 1. It should provide an include file that says how to call the exported
     function.  This include file is exported by putting it in the `include`
     directory of the installed package, which means it is in
     the `inst/include` directory of the source package.  In this include
-    file [`foompter.h`](packages/foompter/inst/include/foompter.h) there
+    file [`foompter.h`](packages/foompter/src/foompter.h) there
     is a typedef
     for a function pointer which can be a pointer to the function we
     want to export.  Just to make sure this is declared correctly,
