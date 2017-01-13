@@ -3,7 +3,7 @@
 #include "myfoompter.h"
 #include "foompter.h"
 
-// Note that foompter.h is not in this package but in the foompter package
+// Note that foompter.h is not in this package but in the foompter package.
 // We can see it because we have foompter in the LinkingTo field of our
 // DESCRIPTION file and foompter has it in its inst/include directory.
 
