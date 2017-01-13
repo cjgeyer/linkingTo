@@ -14,14 +14,14 @@ callable from another package, it has to do a bunch of things.
 
 1. It has to register its C functions called from R via
     the `R_registerRoutines` mechanism
-    ([Section 5.4 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).
-    Actually, on second thought I don't know that this is necessary
+    ([Section 5.4 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines)).
+    On second thought, I don't know that this is necessary
     for the rest of this to work.  But it is a good idea anyway.
     This item only benefits this package `foompter`.  It is the next
     item that benefits the other package `goompter`.
 
 1. It has to register its C functions called from C in other packages via
-    the `R_RegisterCCallable` mechanism ([Section 5.4.2 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages).
+    the `R_RegisterCCallable` mechanism ([Section 5.4.2 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages)).
     In our package `foompter` this is done in [`init.c`](packages/foompter/src/init.c).  This file also does item 1 above.
 
 1. It should provide an include file that says how to call the exported
@@ -34,18 +34,19 @@ callable from another package, it has to do a bunch of things.
     want to export.  Just to make sure this is declared correctly,
     we make such a function pointer which we don't actually use in
     this package (in [`foompter.c`](packages/foompter/src/foompter.c))
-    just do the compiler will check that the typedef is correct.
+    so the compiler will check that the typedef is correct.
 
-1. Since we need the header file in two places we make
+1. Since we need the header file in two places, we make
     `packages/foompter/inst/include/foompter.h` a symbolic link to
     `packages/foompter/src/foompter.h`.
 
 # The Package Calling
 
 In order for R package `goompter` to be able to call a function
-(named `foompter`) from another package, it has to do a bunch of things.
+(named `foompter`) from another package, it has to do a bunch of things,
+all of which are described in [Section 5.4.2 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages).
 
-1. It has to make sure that package is loaded before it is by doing two
+1. It has to make sure that other package is loaded before it is by doing two
     things.
 
     a. It has to put the name of that package in the Imports field of its
@@ -57,7 +58,7 @@ In order for R package `goompter` to be able to call a function
 
 1. It also has to put the name of that package in the LinkingTo field of its
     [`DESCRIPTION` file](packages/goompter/DESCRIPTION).  This is so
-    to header file from the other package can be accessed while compiling
+    the header file from the other package can be accessed while compiling
     this package.
 
 1. Then it has to call the C function `R_GetCCallable` to get a function
