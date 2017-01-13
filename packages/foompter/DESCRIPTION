@@ -1,0 +1,11 @@
+Package: foompter
+Version: 0.2
+Date: 2017-01-13
+Title: Demo Linking to Native Routine in Other Package
+Author: Charles J. Geyer <charlie@stat.umn.edu>
+Maintainer: Charles J. Geyer <charlie@stat.umn.edu>
+Depends: R (>= 3.0.0)
+Description: This is a demo package that illustrates linking one package
+    to another.  This is the linked to package: the function foompter in
+    this package is called from package goompter.
+License: Unlimited

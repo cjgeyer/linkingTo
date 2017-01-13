@@ -1,0 +1,7 @@
+
+# Refer to all C/Fortran routines by their name prefixed by C_
+useDynLib(goompter, .registration = TRUE, .fixes = "C_")
+
+import(foompter)
+export(goompter)
+

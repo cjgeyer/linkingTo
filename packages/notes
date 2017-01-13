@@ -1,0 +1,5 @@
+R CMD build foompter
+R CMD check foompter_0.2.tar.gz 
+R CMD INSTALL foompter
+R CMD build goompter
+R CMD check goompter_0.2.tar.gz 
