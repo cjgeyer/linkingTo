@@ -55,3 +55,20 @@ In order for R package `goompter` to be able to call a function
         in its
         [`NAMESPACE` file](packages/goompter/NAMESPACE).
 
+1. It also has to put the name of that package in the LinkingTo field of its
+    [`DESCRIPTION` file](packages/goompter/DESCRIPTION).  This is so
+    to header file from the other package can be accessed while compiling
+    this package.
+
+1. Then it has to call the C function `R_GetCCallable` to get a function
+    pointer to the function it wants to call (which is only possible because
+    that function was already registered as described in item 2 of
+    the preceding section).  This is done in the function
+    [`myfoompter`](packages/goompter/src/myfoompter.c).  Note that this
+    file includes the include file `foompter.h` (which is only possible
+    because we made it available by items 3 and 4 of the list in the
+    preceding section and item 2 of this list).  That include file has the
+    typedef we use to cast the result of `R_GetCCallable` to the correct type.
+
+1. Now we're good.  This function pointer can now be used just like any
+    other C function.  So we do.
