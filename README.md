@@ -13,7 +13,12 @@ In order for R package `foompter` to have a function (also named `foompter`)
 callable from another package, it has to do a bunch of things.
 
 1. It has to register its C functions called from R via
-    the `R_registerRoutines` mechanism ([Section 5.4 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).  Actually, on second thought I don't know that this is necessary for the rest of this to work.  But it is a good idea anyway.
+    the `R_registerRoutines` mechanism
+    ([Section 5.4 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).
+    Actually, on second thought I don't know that this is necessary
+    for the rest of this to work.  But it is a good idea anyway.
+    This item only benefits this package `foompter`.  It is the next
+    item that benefits the other package `goompter`.
 1. It has to register its C functions called from C in other packages via
     the `R_RegisterCCallable` mechanism ([Section 5.4.2 of *Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages).
     In our package `foompter` this is done in [`init.c`](packages/foompter/src/init.c).  This file also does item 1 above.
@@ -34,4 +39,14 @@ callable from another package, it has to do a bunch of things.
 
 # The Package Calling
 
-Nothing here yet.
+In order for R package `goompter` to be able to call a function
+(named `foompter`) from another package, it has to do a bunch of things.
+
+1. It has to make sure that package is loaded before it is by doing two
+    things.
+    a. It has to put the name of that package in the Imports field of its
+    [`DESCRIPTION` file](packages/goompter/DESCRIPTION).
+    b. It has to import that package with an `import(foompter)` directive
+    in its
+    [`NAMESPACE` file](packages/goompter/NAMESPACE).
+
