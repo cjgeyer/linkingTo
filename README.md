@@ -44,9 +44,10 @@ In order for R package `goompter` to be able to call a function
 
 1. It has to make sure that package is loaded before it is by doing two
     things.
+
     a. It has to put the name of that package in the Imports field of its
-    [`DESCRIPTION` file](packages/goompter/DESCRIPTION).
+        [`DESCRIPTION` file](packages/goompter/DESCRIPTION).
     b. It has to import that package with an `import(foompter)` directive
-    in its
-    [`NAMESPACE` file](packages/goompter/NAMESPACE).
+        in its
+        [`NAMESPACE` file](packages/goompter/NAMESPACE).
 
