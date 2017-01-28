@@ -14,7 +14,7 @@
 
 // The definitive reference is Section 5.4.2 of Writing R Extensions
 
-void myfoompter(int *n, double *x)
+inline void myfoompter(int *n, double *x)
 {
     static foompter_funptr fun = NULL;
     if (fun == NULL)
