@@ -28,8 +28,8 @@ callable from another package, it has to do a bunch of things.
     function.  This include file is exported by putting it in the `include`
     directory of the installed package, which means it is in
     the `inst/include` directory of the source package.  In this include
-    file [`foompter-export.h`](packages/foompter/src/foompter-export.h) there
-    is a typedef
+    file [`foompter-export.h`](packages/foompter/inst/include/foompter-export.h)
+    there is a typedef
     for a function pointer which can be a pointer to the function we
     want to export.  Just to make sure this is declared correctly,
     we make such a function pointer which we don't actually use in
