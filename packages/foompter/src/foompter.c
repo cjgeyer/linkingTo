@@ -12,4 +12,6 @@ void foompter(int *n, double *x)
 // the compiler complain if the typedef is wrong.
 // And we only need the typedef for the benefit of functions in other
 // R packages calling foompter via the R_GetCCallable mechanism
+
+#include "foompter-export.h";
 static foompter_funptr foobarbaz = foompter;

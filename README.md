@@ -28,7 +28,7 @@ callable from another package, it has to do a bunch of things.
     function.  This include file is exported by putting it in the `include`
     directory of the installed package, which means it is in
     the `inst/include` directory of the source package.  In this include
-    file [`foompter.h`](packages/foompter/src/foompter.h) there
+    file [`foompter-export.h`](packages/foompter/src/foompter-export.h) there
     is a typedef
     for a function pointer which can be a pointer to the function we
     want to export.  Just to make sure this is declared correctly,
@@ -36,9 +36,9 @@ callable from another package, it has to do a bunch of things.
     this package (in [`foompter.c`](packages/foompter/src/foompter.c))
     so the compiler will check that the typedef is correct.
 
-1. Since we need the header file in two places, we make
-    `packages/foompter/inst/include/foompter.h` a symbolic link to
-    `packages/foompter/src/foompter.h`.
+1. In order to make the include file described in the preceding item
+    available to this package, we put \verb@-I../inst/include@ in
+    the \verb@PKG_CFLAGS@ for this package in the \texttt{Makevars} file.
 
 # The Package Calling
 

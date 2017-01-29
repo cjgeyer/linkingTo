@@ -1,9 +1,10 @@
 #include <stddef.h>
 #include <R_ext/Rdynload.h>
 #include "myfoompter.h"
-#include "foompter.h"
+#include "foompter-export.h"
 
-// Note that foompter.h is not in this package but in the foompter package.
+// Note that foompter-export.h is not in this package but in the foompter
+// package.
 // We can see it because we have foompter in the LinkingTo field of our
 // DESCRIPTION file and foompter has it in its inst/include directory.
 

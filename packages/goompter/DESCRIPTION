@@ -1,6 +1,6 @@
 Package: goompter
-Version: 0.2
-Date: 2017-01-13
+Version: 0.3
+Date: 2017-01-29
 Title: Demo Linking to Native Routine in Other Package
 Author: Charles J. Geyer <charlie@stat.umn.edu>
 Maintainer: Charles J. Geyer <charlie@stat.umn.edu>
