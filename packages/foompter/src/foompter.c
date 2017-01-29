@@ -13,5 +13,6 @@ void foompter(int *n, double *x)
 // And we only need the typedef for the benefit of functions in other
 // R packages calling foompter via the R_GetCCallable mechanism
 
-#include "foompter-export.h";
+#include "foompter-export.h"
+#pragma GCC diagnostic ignored "-Wunused-variable"
 static foompter_funptr foobarbaz = foompter;
