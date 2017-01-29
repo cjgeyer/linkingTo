@@ -37,8 +37,8 @@ callable from another package, it has to do a bunch of things.
     so the compiler will check that the typedef is correct.
 
 1. In order to make the include file described in the preceding item
-    available to this package, we put \verb@-I../inst/include@ in
-    the \verb@PKG_CFLAGS@ for this package in the \texttt{Makevars} file.
+    available to this package, we put `-I../inst/include` in
+    the `PKG_CFLAGS` for this package in the `Makevars` file.
 
 # The Package Calling
 
