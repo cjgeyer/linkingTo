@@ -67,7 +67,7 @@ all of which are described in [Section 5.4.2 of *Writing R Extensions*](https://
     that function was already registered as described in item 2 of
     the preceding section).  This is done in the function
     [`myfoompter`](packages/goompter/src/myfoompter.c).  Note that this
-    file includes the include file `foompter.h` (which is only possible
+    file includes the include file `foompter-export.h` (which is only possible
     because we made it available by items 3 and 4 of the list in the
     preceding section and item 2 of this list).  That include file has the
     typedef we use to cast the result of `R_GetCCallable` to the correct type.
