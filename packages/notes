@@ -1,4 +1,5 @@
 export PKG_CFLAGS="-W -Wall -Wextra"
+rm *.tar.gz # if any version number changes
 R CMD build foompter
 R CMD check foompter_*.tar.gz
 R CMD INSTALL foompter
