@@ -15,7 +15,12 @@
 
 // The definitive reference is Section 5.4.2 of Writing R Extensions
 
-inline void myfoompter(int *n, double *x)
+// cannot inline this because (1) it is not in the same translation unit
+// as where it is called and (2) because it modifies a static variable
+// could fix (1) by putting it in the header but not (2) and we don't
+// want to call R_GetCCallable for every invocation of this function
+
+void myfoompter(int *n, double *x)
 {
     static foompter_funptr fun = NULL;
     if (fun == NULL)
